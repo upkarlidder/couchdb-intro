@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dc0d856b-3c16-44a4-9690-e4f537985ec8",
+		"_postman_id": "413142ad-2c88-49c5-9636-b6919dda6a34",
 		"name": "couchdb",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -27,10 +27,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/_all_dbs",
+							"raw": "https://{{username}}:{{password}}@{{host}}/_all_dbs",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -38,6 +38,38 @@
 							},
 							"path": [
 								"_all_dbs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "database-create",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"path": [
+								"{{dbname}}"
 							]
 						}
 					},
@@ -62,74 +94,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
-							],
-							"auth": {
-								"user": "{{username}}",
-								"password": "{{password}}"
-							},
-							"path": [
-								"{{dbname}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "database-create",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}",
-							"protocol": "https",
-							"host": [
-								"{{url}}"
-							],
-							"auth": {
-								"user": "{{username}}",
-								"password": "{{password}}"
-							},
-							"path": [
-								"{{dbname}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "database-delete",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}",
-							"protocol": "https",
-							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -158,10 +126,10 @@
 							"file": {}
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/_bulk_docs",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/_bulk_docs",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -170,6 +138,38 @@
 							"path": [
 								"{{dbname}}",
 								"_bulk_docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "database-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}",
+							"protocol": "https",
+							"host": [
+								"{{host}}"
+							],
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"path": [
+								"{{dbname}}"
 							]
 						}
 					},
@@ -196,10 +196,10 @@
 							"raw": "{\n  \"id\": 1111,\n  \"user_name\": \"hdeatonam111\",\n  \"first_name\": \"Hendrika\",\n  \"last_name\": \"Deaton\",\n  \"email\": \"hdeatonam@1688.com\",\n  \"gender\": \"Female\",\n  \"age\": 99,\n  \"ip_address\": \"171.252.77.106\",\n  \"city\": \"Druya\",\n  \"state\": null,\n  \"country\": \"Belarus\",\n  \"postal_code\": null\n}\n"
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -214,9 +214,6 @@
 				},
 				{
 					"name": "document-read",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -226,12 +223,15 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/75a647ca9e80b0188703f95f3fde126a",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/75a647ca9e80b0188703f95f3fde126a",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -262,10 +262,10 @@
 							"raw": "{\n\t\"first_name\":\"upkarlidder\"\n}"
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/39dc7577b88bc6564b8c7ad381ca60e4?rev=1-836692fc93ac6c036886259628fcafbb",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/39dc7577b88bc6564b8c7ad381ca60e4?rev=1-836692fc93ac6c036886259628fcafbb",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -302,10 +302,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/39dc7577b88bc6564b8c7ad381ca60e4?rev=2-2e237c7d1f4b0c05783f364504b5795c",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/39dc7577b88bc6564b8c7ad381ca60e4?rev=2-2e237c7d1f4b0c05783f364504b5795c",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -341,10 +341,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/_all_docs?limit=10",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/_all_docs?limit=10",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -386,10 +386,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/_design/users/_view/country?reduce=false&keys=%5B%22Albania%22%5D",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/_design/users/_view/country?reduce=false&keys=%5B%22Albania%22%5D",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -438,10 +438,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/_design/users/_view/country?reduce=true&group=true&keys=%5b%22Albania%22%5d",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/_design/users/_view/country?reduce=true&group=true&keys=%5b%22Albania%22%5d",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -495,10 +495,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/_design/users/_view/age_by_country?group=true&reduce=true",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/_design/users/_view/age_by_country?group=true&reduce=true",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -542,10 +542,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://{{username}}:{{password}}@{{url}}/{{dbname}}/_design/users/_view/gender_by_country?group=true&reduce=true",
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/_design/users/_view/gender_by_country?group=true&reduce=true",
 							"protocol": "https",
 							"host": [
-								"{{url}}"
+								"{{host}}"
 							],
 							"auth": {
 								"user": "{{username}}",
@@ -605,25 +605,25 @@
 	],
 	"variable": [
 		{
-			"id": "f3fcacb9-983e-49be-b627-f5c0882b6d30",
+			"id": "02e17c05-0dbd-4040-908c-e7206d41be79",
 			"key": "username",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "5c014510-bc7f-46cb-861a-d0546156473c",
+			"id": "dda8c337-75f6-4b92-bee2-7dd521a556fa",
 			"key": "password",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "869ea22a-42cb-418b-9c2c-d432d3605a08",
-			"key": "url",
+			"id": "2e53785f-e53b-4716-88ee-75d28a015462",
+			"key": "host",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "7368629a-41ba-4991-bee0-0cadd0d30256",
+			"id": "ad8c8ca2-17c0-42c4-ad27-ce8042ccc349",
 			"key": "dbname",
 			"value": "",
 			"type": "string"

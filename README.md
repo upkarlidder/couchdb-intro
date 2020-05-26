@@ -4,7 +4,7 @@
 [Apache CouchDB / Cloudant Slides](https://slides.com/upkar/apache-couchdb-cloudant)
 
 ## prerequisites to start the work
-1. (IBM Cloud Sign up)[https://ibm.biz/BdqfxE]: Use this link to sign into your account if you already have one : <https://ibm.biz/BdqfxE>
+1. [IBM Cloud Sign up](https://ibm.biz/BdqfxE): Use this link to sign into your account if you already have one : <https://ibm.biz/BdqfxE>
 2. [Postman to finish workshop](https://www.getpostman.com/downloads/)
 3. Load [existing workspace](data/couchdb.postman_collection.json) into postman. 
 4. Create database and load [person.json](data/person.json) into the database.

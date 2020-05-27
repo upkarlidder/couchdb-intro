@@ -1,22 +1,48 @@
 # Hands On Workshop: Introduction to Apache CouchDB
 
-## Slides
+## Presentation
 [Apache CouchDB / Cloudant Slides](https://slides.com/upkar/apache-couchdb-cloudant)
 
-## prerequisites to start the work
+## Prerequisites
 1. [IBM Cloud Sign up](https://ibm.biz/BdqfxE): Use this link to sign into your account if you already have one : <https://ibm.biz/BdqfxE>
 2. [Postman to finish workshop](https://www.getpostman.com/downloads/)
-3. Load [existing workspace](data/couchdb.postman_collection.json) into postman. 
-4. Create database and load [person.json](data/person.json) into the database.
+3. I also really like [Insomia](https://insomnia.rest/download/)
+4. Load [existing workspace](data/couchdb.postman_collection.json) into postman or insomnia and change environment variables. 
+5. Create database and load [person.json](data/person.json) into the database. You should get 1000 person records. I used [Mockaroo](https://mockaroo.com/) to generate this random data.
+
+## Optional
+1. Run couchdb locally
+   1. `docker pull couchdb`
+   2. `docker run -d --name my-couchdb -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=password -p 5984:5984 couchdb`
+   3. docker ps
+        ```
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                        NAMES
+        35c8c7264fa9        couchdb             "tini -- /docker-ent…"   6 seconds ago       Up 6 seconds        4369/tcp, 9100/tcp, 0.0.0.0:5984->5984/tcp   my-couchdb
+        ```
+2. Visit Futon `localhost:5984/_utils/`
+3. Create `users` database locally
+   
+    ![](images/local-create.png)
+
+4. Configure replication
+   
+    ![](images/local-replicate.png)
+
+    Don't forget to add database name to the end of the URL.
+    ```
+    {
+        "source" : "https://$USERNAME1:$PASSWORD1.example.com/db",
+        "target" : "https://$USERNAME2:$PASSWORD2@$ACCOUNT2.cloudant.com/db",
+    }
+    ```
 
 ## Event Description
 RSVP on Crowdcast NOW:
-https://www.crowdcast.io/e/introduction-to-apache
 
 ❗Please do not forget to register on Crowdcast and join us using Chrome browser via Crowdcast on the event date!
 
 ❗In order to take full advantage of this workshop, please do not forget to sign up for a FREE IBM Cloud account prior to the workshop by using the link below.
-https://ibm.biz/BdzdvU
+https://ibm.biz/BdqfxE
 
 Join IBM Developer SF to get an introduction to Apache CouchDB - an open-source document-oriented database software that focuses on ease of use and having a scalable architecture.
 

@@ -1,0 +1,630 @@
+{
+	"info": {
+		"_postman_id": "80caac53-3012-43ec-9eb0-1632152c7bc7",
+		"name": "couchdb-localhost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "database",
+			"item": [
+				{
+					"name": "database-list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:5984/_all_dbs",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "5984",
+							"path": [
+								"_all_dbs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "database-create",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "database-details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "database-bulk-insert",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/Users/upkar/Documents/upkar-code/couchdb-intro/data/person.json"
+							}
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}/_bulk_docs",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}",
+								"_bulk_docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "database-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "documents",
+			"item": [
+				{
+					"name": "document-create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 1111,\n  \"user_name\": \"hdeatonam111\",\n  \"first_name\": \"Hendrika\",\n  \"last_name\": \"Deaton\",\n  \"email\": \"hdeatonam@1688.com\",\n  \"gender\": \"Female\",\n  \"age\": 99,\n  \"ip_address\": \"171.252.77.106\",\n  \"city\": \"Druya\",\n  \"state\": null,\n  \"country\": \"Belarus\",\n  \"postal_code\": null\n}\n"
+						},
+						"url": {
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}",
+							"protocol": "https",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{dbname}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "document-read",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://{{username}}:{{password}}@{{host}}/{{dbname}}/75a647ca9e80b0188703f95f3fde126a",
+							"protocol": "https",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{dbname}}",
+								"75a647ca9e80b0188703f95f3fde126a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "document-update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\":\"upkarlidder\"\n}"
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}/f34a059840652cd9c7415b0e623eba15?rev=2-2e237c7d1f4b0c05783f364504b5795c",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}",
+								"f34a059840652cd9c7415b0e623eba15"
+							],
+							"query": [
+								{
+									"key": "rev",
+									"value": "2-2e237c7d1f4b0c05783f364504b5795c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "document-delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}/39dc7577b88bc6564b8c7ad381ca60e4?rev=2-2e237c7d1f4b0c05783f364504b5795c",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}",
+								"39dc7577b88bc6564b8c7ad381ca60e4"
+							],
+							"query": [
+								{
+									"key": "rev",
+									"value": "2-2e237c7d1f4b0c05783f364504b5795c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "document-read-all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}/{{dbname}}/_all_docs?limit=10",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{dbname}}",
+								"_all_docs"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "query-mapreduce",
+			"item": [
+				{
+					"name": "query-country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}/_design/users/_view/country?reduce=true&group=true",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}",
+								"_design",
+								"users",
+								"_view",
+								"country"
+							],
+							"query": [
+								{
+									"key": "reduce",
+									"value": "true"
+								},
+								{
+									"key": "group",
+									"value": "true"
+								},
+								{
+									"key": "keys",
+									"value": "%5B%22Canada%22%5D",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query-country-aggregate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}/_design/country/_view/country?reduce=true&group=true&keys=%5b%22Albania%22%2c+%22Afghanistan%22%5d",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}",
+								"_design",
+								"country",
+								"_view",
+								"country"
+							],
+							"query": [
+								{
+									"key": "reduce",
+									"value": "true"
+								},
+								{
+									"key": "group",
+									"value": "true"
+								},
+								{
+									"key": "keys",
+									"value": "%5b%22Albania%22%5d",
+									"disabled": true
+								},
+								{
+									"key": "keys",
+									"value": "%5b%22Albania%22%2c+%22Afghanistan%22%5d"
+								}
+							]
+						},
+						"description": "Get the count of users for each country group."
+					},
+					"response": []
+				},
+				{
+					"name": "query-avg-age-country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}:{{port}}/{{dbname}}/_design/country/_view/age_by_country?group=true&reduce=true",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{dbname}}",
+								"_design",
+								"country",
+								"_view",
+								"age_by_country"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "true"
+								},
+								{
+									"key": "reduce",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "query-gender_country",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "http://{{username}}:{{password}}@{{host}}/{{dbname}}:{{port}}/_design/users/_view/gender_by_country?group=true&reduce=true",
+							"protocol": "http",
+							"auth": {
+								"user": "{{username}}",
+								"password": "{{password}}"
+							},
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{dbname}}:{{port}}",
+								"_design",
+								"users",
+								"_view",
+								"gender_by_country"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "true"
+								},
+								{
+									"key": "reduce",
+									"value": "true"
+								},
+								{
+									"key": "keys",
+									"value": "%5b%5b%22Afghanistan%22%2c%22Male%22%5d%5d",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get the number of female and male for each country"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c1ee6336-39c2-4ba7-b1ad-9ce25b06f429",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "50846478-34e3-4a4c-b1b0-2ceacc5896d8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "23815c05-e5ae-418d-a513-42ccdf972955",
+			"key": "username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"id": "f686389d-5113-4a07-ba43-ef2fd22609d5",
+			"key": "password",
+			"value": "password",
+			"type": "string"
+		},
+		{
+			"id": "4c39ad53-4f61-498c-a6e9-5ea1ad48dcdc",
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"id": "ff70b4f3-ced2-44b6-93f6-5aee6f23de60",
+			"key": "dbname",
+			"value": "users",
+			"type": "string"
+		},
+		{
+			"id": "109969c8-6584-4e22-89ff-611a021885cd",
+			"key": "port",
+			"value": "5984",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
